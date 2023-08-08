@@ -1,0 +1,75 @@
+{
+  productName: 'MagicBox',
+  appId: 'work.jsfr.magicbox',
+  asar: true,
+  extends: null,
+  //"compression": "maximum",
+  compression: 'normal',
+  copyright: 'ⓒ 2023 ${author}',
+  artifactName: '${productName}_v${version}_${arch}.${ext}',
+  directories: {
+    buildResources: './buildAssets/installer/',
+    output: './release/'
+  },
+  files: [
+    'dist/**/*',
+    '!release/**/*',
+    '!tests/**/*'
+  ],
+  win: {
+    target: [
+      //      {
+      //        target: 'appx',
+      //        arch: 'x64'
+      //      },
+      {
+        target: 'zip',
+        arch: 'x64'
+      },
+      {
+        target: 'portable',
+        arch: 'x64'
+      }
+      //      {
+      //        target: 'nsis',
+      //        arch: 'x64'
+      //      }
+    ],
+    icon: './buildAssets/installer/icon.ico'
+  },
+  portable: {
+    artifactName: '${productName}_v${version}_${arch}_Portable.${ext}'
+  },
+  nsis: {
+    oneClick: true
+  }
+  //  mac: {
+  //    bundleVersion: '1.0',
+  //    identity: null,
+  //    hardenedRuntime: true,
+  //    gatekeeperAssess: false,
+  //    icon: 'buildAssets/installer/icon.icns',
+  //    type: 'distribution',
+  //    target: [
+  //      {
+  //        target: 'dmg',
+  //        arch: [
+  //          'x64',
+  //          'arm64',
+  //          'universal'
+  //        ]
+  //      }
+  //    ]
+  //  },
+  //  linux: {
+  //    executableName: 'magicbox',
+  //    icon: 'buildAssets/installer',
+  //    category: 'Utility',
+  //    target: [
+  //      {
+  //        target: 'AppImage',
+  //        arch: 'x64'
+  //      }
+  //    ]
+  //  }
+}
