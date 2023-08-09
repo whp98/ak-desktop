@@ -1,18 +1,18 @@
 {
-  "name": "magicbox",
+  "name": "ak-desktop",
   "version": "1.0.0",
-  "description": "ViteJS + Electron + React + Material-UI Template",
-  "homepage": "https://github.com/whp98/magicbox",
+  "description": "ak-desktop  is an aktool client tool",
+  "homepage": "https://github.com/whp98/ak-desktop",
   "author": "whp98",
   "license": "MIT",
   "main": "dist/main/index.js",
   "private": true,
   "repository": {
     "type": "git",
-    "url": "https://github.com/whp98/magicbox.git"
+    "url": "https://github.com/whp98/ak-desktop.git"
   },
   "bugs": {
-    "url": "https://github.com/whp98/magicbox/issues"
+    "url": "https://github.com/whp98/ak-desktop/issues"
   },
   "scripts": {
     "dev": "vite",

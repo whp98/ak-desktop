@@ -1,8 +1,8 @@
 import React from 'react';
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
-import {useDispatch, useSelector} from 'react-redux';
-import {MdChevronLeft, MdChevronRight, MdLightMode, MdMenu, MdModeNight} from 'react-icons/md';
+import { useDispatch, useSelector } from 'react-redux';
+import { MdChevronLeft, MdChevronRight, MdLightMode, MdMenu, MdModeNight } from 'react-icons/md';
 import {
   Box,
   Divider,
@@ -16,10 +16,10 @@ import {
   Toolbar,
   Typography,
 } from '@mui/material';
-import {styled, useTheme} from '@mui/material/styles';
-import MuiAppBar, {AppBarProps as MuiAppBarProps} from '@mui/material/AppBar';
-import {RootState} from '@/renderer/store';
-import {setDarkTheme} from '@/renderer/store/slices/appScreenSlice';
+import { styled, useTheme } from '@mui/material/styles';
+import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
+import { RootState } from '@/renderer/store';
+import { setDarkTheme } from '@/renderer/store/slices/appScreenSlice';
 import SidebarData from '@/renderer/components/router/SidebarData';
 
 const drawerWidth = 240;
@@ -115,7 +115,7 @@ const Sidebar: React.FunctionComponent<Props> = ({children}) => {
             <MdMenu/>
           </IconButton>
           <Typography variant="h6" component="div" sx={{flexGrow: 1}}>
-            MagicBox · {subTitle || '主页'}
+            ak-desktop · {subTitle || '主页'}
           </Typography>
           <IconButton
             size="large"

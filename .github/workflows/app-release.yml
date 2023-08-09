@@ -80,8 +80,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }} # 上传网址，无需改动
-          asset_path: release/MagicBox_v${{steps.get-version-no-v.outputs.result}}_x64_Portable.exe # 上传路径
-          asset_name: MagicBox_v${{steps.get-version-no-v.outputs.result}}_windows_${{steps.get-version.outputs.result}}_x64_Portable.exe # 资源名
+          asset_path: release/ak-desktop_v${{steps.get-version-no-v.outputs.result}}_x64_Portable.exe # 上传路径
+          asset_name: ak-desktop_v${{steps.get-version-no-v.outputs.result}}_windows_${{steps.get-version.outputs.result}}_x64_Portable.exe # 资源名
           asset_content_type: application/vnd.microsoft.portable-executable #资源类型
       # 上传至release的资源
       - name: Upload Release Windows zip Asset
@@ -90,6 +90,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }} # 上传网址，无需改动
-          asset_path: release/MagicBox_v${{steps.get-version-no-v.outputs.result}}_x64.zip # 上传路径
-          asset_name: MagicBox_v${{steps.get-version-no-v.outputs.result}}_windows_${{steps.get-version.outputs.result}}_x64.zip # 资源名
+          asset_path: release/ak-desktop_v${{steps.get-version-no-v.outputs.result}}_x64.zip # 上传路径
+          asset_name: ak-desktop_v${{steps.get-version-no-v.outputs.result}}_windows_${{steps.get-version.outputs.result}}_x64.zip # 资源名
           asset_content_type: application/zip #资源类型

@@ -1,6 +1,6 @@
 {
-  productName: 'MagicBox',
-  appId: 'work.jsfr.magicbox',
+  productName: 'ak-desktop',
+  appId: 'work.jsfr.ak-desktop',
   asar: true,
   extends: null,
   //"compression": "maximum",
@@ -62,7 +62,7 @@
   //    ]
   //  },
   //  linux: {
-  //    executableName: 'magicbox',
+  //    executableName: 'ak-desktop',
   //    icon: 'buildAssets/installer',
   //    category: 'Utility',
   //    target: [

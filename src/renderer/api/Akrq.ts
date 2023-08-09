@@ -1,8 +1,11 @@
 // index.ts
-import type {AxiosInstance, AxiosRequestConfig, AxiosResponse} from 'axios'
-import axios from 'axios'
+import type { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
+import axios from 'axios';
 
-const baseURL = process.env.NODE_ENV === 'development' ? 'http://127.0.0.1:8080/api/public' : 'http://127.0.0.1:8080/api/public';
+const baseURL =
+  process.env.NODE_ENV === 'development'
+    ? 'http://127.0.0.1:28080/api/public'
+    : 'http://127.0.0.1:28080/api/public';
 
 // 导出Request，可以用来自定义传递配置来创建实例
 export class Akrq {

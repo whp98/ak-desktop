@@ -15,7 +15,7 @@ const About = () => {
   const dispatch = useDispatch();
 
   const handleGithubLink = async (): Promise<void> => {
-    await window.mainApi.send('msgOpenExternalLink', 'https://github.com/whp98/magicbox');
+    await window.mainApi.send('msgOpenExternalLink', 'https://github.com/whp98/ak-desktop');
   };
 
   useEffect(() => {

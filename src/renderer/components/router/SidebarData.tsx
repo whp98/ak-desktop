@@ -1,29 +1,37 @@
 import React from 'react';
-import {MdDriveFileMove, MdInfo, MdLibraryMusic} from 'react-icons/md';
+import { MdBarChart, MdCurrencyExchange, MdInfo, MdOilBarrel, MdStickyNote2 } from 'react-icons/md';
+import { AiFillGold } from 'react-icons/ai';
 
 const SidebarData = [
   {
     title: '关于',
     path: '/',
-    icon: <MdInfo/>,
+    icon: <MdInfo />,
   },
   {
-    title: '文件重命名',
-    path: '/fileRename',
-    icon: <MdDriveFileMove/>,
-  },
-  {
-    title: '汽水音乐歌单导出',
-    path: '/qishui',
-    icon: <MdLibraryMusic/>,
-  }, {
     title: 'ak股票k线',
     path: '/stock',
-    icon: <MdLibraryMusic/>,
-  },{
+    icon: <MdBarChart />,
+  },
+  {
     title: 'ak股票列表',
     path: '/stock-list',
-    icon: <MdLibraryMusic/>,
+    icon: <MdStickyNote2 />,
+  },
+  {
+    title: 'ak汇率外汇管理局',
+    path: '/currency',
+    icon: <MdCurrencyExchange />,
+  },
+  {
+    title: 'ak 中国油价',
+    path: '/oil-price',
+    icon: <MdOilBarrel />,
+  },
+  {
+    title: 'ak黄金价格',
+    path: '/gold-price',
+    icon: <AiFillGold />,
   },
 ];
 export default SidebarData;
