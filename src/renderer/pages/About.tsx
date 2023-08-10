@@ -32,8 +32,8 @@ const About = () => {
       <div css={bodyRoot}>
         <Paper
           sx={{
-            display: 'flex',
-            flexDirection: 'column',
+            "display": 'flex',
+            "flexDirection": 'column',
           }}
         >
           <List sx={{}} component="nav" aria-label="mailbox folders">

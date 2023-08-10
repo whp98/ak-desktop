@@ -26,8 +26,8 @@ const AkStockTable = () => {
   const [filterText, setFilterText] = useState('');
   // eslint-disable-next-line no-undef
   const [filterData, setFilterData] = useState<StockRow[]>([{
-    code: '000001',
-    name: '平安银行'
+    "code": '000001',
+    "name": '平安银行'
   }]);
   const blurHandler = () => {
     const filteredData = list.filter(item => {

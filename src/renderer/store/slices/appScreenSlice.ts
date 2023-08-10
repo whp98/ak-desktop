@@ -1,5 +1,5 @@
-import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
 export interface AppScreenState {
   version: string;
@@ -8,22 +8,22 @@ export interface AppScreenState {
 }
 
 const initialState: AppScreenState = {
-  version: 'Unknown',
-  darkTheme: true,
-  counterValue: 0,
+  "version": 'Unknown',
+  "darkTheme": false,
+  "counterValue": 0,
 };
 
 export const appScreenSlice = createSlice({
-  name: 'appScreen',
+  "name": 'appScreen',
   initialState,
-  reducers: {
-    setVersion: (state, action: PayloadAction<string>) => {
+  "reducers": {
+    "setVersion": (state, action: PayloadAction<string>) => {
       state.version = action.payload;
     },
-    setDarkTheme: (state, action: PayloadAction<boolean>) => {
+    "setDarkTheme": (state, action: PayloadAction<boolean>) => {
       state.darkTheme = action.payload;
     },
-    increaseCount: (state) => {
+    "increaseCount": (state) => {
       state.counterValue += 1;
     },
   },

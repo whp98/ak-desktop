@@ -7,7 +7,7 @@ import Button from '@mui/material/Button';
 import { Stack } from '@mui/material';
 import Alert from '@mui/material/Alert';
 import akrq from '@/renderer/api/Akrq';
-import EChartsContainer from '@/renderer/components/chart/EChartsContainer';
+import EChartsContainer from '@/renderer/components/base/EChartsContainer';
 import PageLayout from '@/renderer/components/layout/PageLayout';
 
 const AkCurrency = () => {
@@ -33,161 +33,161 @@ const AkCurrency = () => {
       ];
     }
     const options = {
-      dataset: {
-        source: res,
+      "dataset": {
+        "source": res,
       },
-      title: {
-        text: `Data Amount: ${echarts.format.addCommas(res.length)}`,
+      "title": {
+        "text": `数据量: ${echarts.format.addCommas(res.length)}`,
       },
-      legend: {
-        data: ['美元', '日元', '欧元', '英镑', '卢布(兑换)', '澳元'],
+      "legend": {
+        "data": ['美元', '日元', '欧元', '英镑', '卢布(兑换)', '澳元'],
       },
-      tooltip: {
-        trigger: 'axis',
-        axisPointer: {
-          type: 'line',
+      "tooltip": {
+        "trigger": 'axis',
+        "axisPointer": {
+          "type": 'line',
         },
       },
-      toolbox: {
-        feature: {
-          dataZoom: {
-            yAxisIndex: false,
+      "toolbox": {
+        "feature": {
+          "dataZoom": {
+            "yAxisIndex": false,
           },
         },
       },
-      grid: [
+      "grid": [
         {
-          left: '10%',
-          right: '10%',
-          bottom: 200,
+          "left": '10%',
+          "right": '10%',
+          "bottom": 200,
         },
         {
-          left: '10%',
-          right: '10%',
-          height: 80,
-          bottom: 80,
+          "left": '10%',
+          "right": '10%',
+          "height": 80,
+          "bottom": 80,
         },
       ],
-      xAxis: [
+      "xAxis": [
         {
-          type: 'category',
-          boundaryGap: false,
+          "type": 'category',
+          "boundaryGap": false,
           // inverse: true,
-          axisLine: { onZero: false },
-          splitLine: { show: false },
-          min: 'dataMin',
-          max: 'dataMax',
+          "axisLine": { "onZero": false },
+          "splitLine": { "show": false },
+          "min": 'dataMin',
+          "max": 'dataMax',
         },
         {
-          type: 'category',
-          gridIndex: 1,
-          boundaryGap: false,
-          axisLine: { onZero: false },
-          axisTick: { show: false },
-          splitLine: { show: false },
-          axisLabel: { show: false },
-          min: 'dataMin',
-          max: 'dataMax',
-        },
-      ],
-      yAxis: [
-        {
-          scale: true,
-          splitArea: {
-            show: true,
-          },
-        },
-        {
-          scale: true,
-          gridIndex: 1,
-          splitNumber: 2,
-          axisLabel: { show: false },
-          axisLine: { show: false },
-          axisTick: { show: false },
-          splitLine: { show: false },
+          "type": 'category',
+          "gridIndex": 1,
+          "boundaryGap": false,
+          "axisLine": { "onZero": false },
+          "axisTick": { "show": false },
+          "splitLine": { "show": false },
+          "axisLabel": { "show": false },
+          "min": 'dataMin',
+          "max": 'dataMax',
         },
       ],
-      dataZoom: [
+      "yAxis": [
         {
-          type: 'inside',
-          xAxisIndex: [0, 1],
-          start: 10,
-          end: 100,
+          "scale": true,
+          "splitArea": {
+            "show": true,
+          },
         },
         {
-          show: true,
-          xAxisIndex: [0, 1],
-          type: 'slider',
-          bottom: 10,
-          start: 10,
-          end: 100,
+          "scale": true,
+          "gridIndex": 1,
+          "splitNumber": 2,
+          "axisLabel": { "show": false },
+          "axisLine": { "show": false },
+          "axisTick": { "show": false },
+          "splitLine": { "show": false },
         },
       ],
-      series: [
+      "dataZoom": [
         {
-          name: '美元',
-          type: 'line',
-          xAxisIndex: 0,
-          yAxisIndex: 0,
-          large: true,
-          encode: {
-            x: 0,
-            y: 1,
+          "type": 'inside',
+          "xAxisIndex": [0, 1],
+          "start": 10,
+          "end": 100,
+        },
+        {
+          "show": true,
+          "xAxisIndex": [0, 1],
+          "type": 'slider',
+          "bottom": 10,
+          "start": 10,
+          "end": 100,
+        },
+      ],
+      "series": [
+        {
+          "name": '美元',
+          "type": 'line',
+          "xAxisIndex": 0,
+          "yAxisIndex": 0,
+          "large": true,
+          "encode": {
+            "x": 0,
+            "y": 1,
           },
         },
         {
-          name: '日元',
-          type: 'line',
-          xAxisIndex: 0,
-          yAxisIndex: 0,
-          large: true,
-          encode: {
-            x: 0,
-            y: 2,
+          "name": '日元',
+          "type": 'line',
+          "xAxisIndex": 0,
+          "yAxisIndex": 0,
+          "large": true,
+          "encode": {
+            "x": 0,
+            "y": 2,
           },
         },
         {
-          name: '欧元',
-          type: 'line',
-          xAxisIndex: 0,
-          yAxisIndex: 0,
-          large: true,
-          encode: {
-            x: 0,
-            y: 3,
+          "name": '欧元',
+          "type": 'line',
+          "xAxisIndex": 0,
+          "yAxisIndex": 0,
+          "large": true,
+          "encode": {
+            "x": 0,
+            "y": 3,
           },
         },
         {
-          name: '英镑',
-          type: 'line',
-          xAxisIndex: 0,
-          yAxisIndex: 0,
-          large: true,
-          encode: {
-            x: 0,
-            y: 4,
+          "name": '英镑',
+          "type": 'line',
+          "xAxisIndex": 0,
+          "yAxisIndex": 0,
+          "large": true,
+          "encode": {
+            "x": 0,
+            "y": 4,
           },
         },
         {
-          name: '卢布(兑换)',
-          type: 'line',
-          xAxisIndex: 0,
-          yAxisIndex: 0,
-          large: true,
-          encode: {
-            x: 0,
-            y: 5,
+          "name": '卢布(兑换)',
+          "type": 'line',
+          "xAxisIndex": 0,
+          "yAxisIndex": 0,
+          "large": true,
+          "encode": {
+            "x": 0,
+            "y": 5,
           },
         },
         {
-          name: '澳元',
-          type: 'line',
-          xAxisIndex: 0,
-          yAxisIndex: 0,
-          large: true,
-          encode: {
-            x: 0,
-            y: 6,
+          "name": '澳元',
+          "type": 'line',
+          "xAxisIndex": 0,
+          "yAxisIndex": 0,
+          "large": true,
+          "encode": {
+            "x": 0,
+            "y": 6,
           },
         },
       ],
@@ -206,10 +206,10 @@ const AkCurrency = () => {
     <PageLayout>
       <Stack
         sx={{
-          display: 'flex',
-          direction: 'column',
-          minWidth: '800',
-          minHeight: '800',
+          "display": 'flex',
+          "direction": 'column',
+          "minWidth": '800',
+          "minHeight": '800',
         }}
       >
         <Button onClick={buttonHandler}>刷新</Button>

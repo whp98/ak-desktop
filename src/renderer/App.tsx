@@ -9,6 +9,8 @@ import AkStockTable from '@/renderer/pages/AkStockTable';
 import AkCurrency from '@/renderer/pages/AkCurrency';
 import AkOilPrice from '@/renderer/pages/AkOilPrice';
 import AkGoldPrice from '@/renderer/pages/AkGoldPrice';
+import AkInvestmentAnalyst from '@/renderer/pages/AkInvestmentAnalyst';
+import AkInvestmentAnalystReport from '@/renderer/pages/AkInvestmentAnalystReport';
 
 const App: React.FunctionComponent = () => (
   // eslint-disable-next-line react/jsx-no-useless-fragment
@@ -22,6 +24,8 @@ const App: React.FunctionComponent = () => (
           <Route path="currency" element={<AkCurrency />} />
           <Route path="oil-price" element={<AkOilPrice />} />
           <Route path="gold-price" element={<AkGoldPrice />} />
+          <Route path="investment-analyst-rank" element={<AkInvestmentAnalyst />} />
+          <Route path="investment-analyst-report" element={<AkInvestmentAnalystReport />} />
         </Route>
         <Route path="*" element={<Err404 />} />
       </Routes>

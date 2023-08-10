@@ -19,7 +19,7 @@ export default class IPCs {
     // 打开文件选择框
     ipcMain.on('openDialogDir', () => {
       dialog
-        .showOpenDialog({ title: '请选择文件', properties: ['openDirectory'] })
+        .showOpenDialog({ "title": '请选择文件', "properties": ['openDirectory'] })
         .then((result) => {
           if (result.filePaths.length > 0) {
             window.webContents.send('fileSelected', result.filePaths);

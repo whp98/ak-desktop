@@ -24,7 +24,7 @@ function isElementVisible(selector: string, waitingMilliseconds = 100) {
 
 test.beforeAll(async () => {
   // Open Electron app from build directory
-  appElectron = await electron.launch({ args: ['dist/main/index.js'] });
+  appElectron = await electron.launch({ "args": ['dist/main/index.js'] });
   appWindow = await appElectron.firstWindow();
 
   await appWindow.waitForEvent('load');
@@ -42,7 +42,7 @@ test('Document element check', async () => {
 });
 
 test('Counter button click check', async () => {
-  await appWindow.click('#btn-counter', { clickCount: 10, delay: 50 });
+  await appWindow.click('#btn-counter', { "clickCount": 10, "delay": 50 });
 
   const counterValueElement = await appWindow.$('#counter-value strong');
 

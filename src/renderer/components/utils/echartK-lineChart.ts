@@ -1,5 +1,5 @@
-import * as echarts from 'echarts'
-import {ECBasicOption} from "echarts/types/src/util/types";
+import * as echarts from 'echarts';
+import { ECBasicOption } from 'echarts/types/src/util/types';
 
 const upColor = '#ec0000';
 const upBorderColor = '#8A0000';
@@ -127,139 +127,139 @@ const handleDateWrapper = (dataInput: any): DataItem[] | null => {
 
 export const getKlineOption = (dataInput) => {
   const option: ECBasicOption = {
-    dataset: {
-      source: handleDateWrapper(dataInput)
+    "dataset": {
+      "source": handleDateWrapper(dataInput),
     },
-    title: {
-      text: `Data Amount: ${echarts.format.addCommas(dataCount)}`
+    "title": {
+      "text": `数据量: ${echarts.format.addCommas(dataCount)}`,
     },
-    tooltip: {
-      trigger: 'axis',
-      axisPointer: {
-        type: 'line'
-      }
+    "tooltip": {
+      "trigger": 'axis',
+      "axisPointer": {
+        "type": 'line',
+      },
     },
-    toolbox: {
-      feature: {
-        dataZoom: {
-          yAxisIndex: false
-        }
-      }
+    "toolbox": {
+      "feature": {
+        "dataZoom": {
+          "yAxisIndex": false,
+        },
+      },
     },
-    grid: [
+    "grid": [
       {
-        left: '10%',
-        right: '10%',
-        bottom: 200
+        "left": '10%',
+        "right": '10%',
+        "bottom": 200,
       },
       {
-        left: '10%',
-        right: '10%',
-        height: 80,
-        bottom: 80
-      }
+        "left": '10%',
+        "right": '10%',
+        "height": 80,
+        "bottom": 80,
+      },
     ],
-    xAxis: [
+    "xAxis": [
       {
-        type: 'category',
-        boundaryGap: false,
+        "type": 'category',
+        "boundaryGap": false,
         // inverse: true,
-        axisLine: {onZero: false},
-        splitLine: {show: false},
-        min: 'dataMin',
-        max: 'dataMax'
+        "axisLine": { "onZero": false },
+        "splitLine": { "show": false },
+        "min": 'dataMin',
+        "max": 'dataMax',
       },
       {
-        type: 'category',
-        gridIndex: 1,
-        boundaryGap: false,
-        axisLine: {onZero: false},
-        axisTick: {show: false},
-        splitLine: {show: false},
-        axisLabel: {show: false},
-        min: 'dataMin',
-        max: 'dataMax'
-      }
+        "type": 'category',
+        "gridIndex": 1,
+        "boundaryGap": false,
+        "axisLine": { "onZero": false },
+        "axisTick": { "show": false },
+        "splitLine": { "show": false },
+        "axisLabel": { "show": false },
+        "min": 'dataMin',
+        "max": 'dataMax',
+      },
     ],
-    yAxis: [
+    "yAxis": [
       {
-        scale: true,
-        splitArea: {
-          show: true
-        }
+        "scale": true,
+        "splitArea": {
+          "show": true,
+        },
       },
       {
-        scale: true,
-        gridIndex: 1,
-        splitNumber: 2,
-        axisLabel: {show: false},
-        axisLine: {show: false},
-        axisTick: {show: false},
-        splitLine: {show: false}
-      }
+        "scale": true,
+        "gridIndex": 1,
+        "splitNumber": 2,
+        "axisLabel": { "show": false },
+        "axisLine": { "show": false },
+        "axisTick": { "show": false },
+        "splitLine": { "show": false },
+      },
     ],
-    dataZoom: [
+    "dataZoom": [
       {
-        type: 'inside',
-        xAxisIndex: [0, 1],
-        start: 10,
-        end: 100
+        "type": 'inside',
+        "xAxisIndex": [0, 1],
+        "start": 10,
+        "end": 100,
       },
       {
-        show: true,
-        xAxisIndex: [0, 1],
-        type: 'slider',
-        bottom: 10,
-        start: 10,
-        end: 100
-      }
+        "show": true,
+        "xAxisIndex": [0, 1],
+        "type": 'slider',
+        "bottom": 10,
+        "start": 10,
+        "end": 100,
+      },
     ],
-    visualMap: {
-      show: false,
-      seriesIndex: 1,
-      dimension: 6,
-      pieces: [
+    "visualMap": {
+      "show": false,
+      "seriesIndex": 1,
+      "dimension": 6,
+      "pieces": [
         {
-          value: 1,
-          color: upColor
+          "value": 1,
+          "color": upColor,
         },
         {
-          value: -1,
-          color: downColor
-        }
-      ]
+          "value": -1,
+          "color": downColor,
+        },
+      ],
     },
-    series: [
+    "series": [
       {
-        type: 'candlestick',
-        itemStyle: {
-          color: upColor,
-          color0: downColor,
-          borderColor: upBorderColor,
-          borderColor0: downBorderColor
+        "type": 'candlestick',
+        "itemStyle": {
+          "color": upColor,
+          "color0": downColor,
+          "borderColor": upBorderColor,
+          "borderColor0": downBorderColor,
         },
-        encode: {
-          x: 0,
-          y: [1, 4, 3, 2]
-        }
+        "encode": {
+          "x": 0,
+          "y": [1, 4, 3, 2],
+        },
       },
       {
-        name: 'Volumn',
-        type: 'bar',
-        xAxisIndex: 1,
-        yAxisIndex: 1,
-        itemStyle: {
-          color: '#7fbe9e'
+        "name": 'Volumn',
+        "type": 'bar',
+        "xAxisIndex": 1,
+        "yAxisIndex": 1,
+        "itemStyle": {
+          "color": '#7fbe9e',
         },
-        large: true,
-        encode: {
-          x: 0,
-          y: 5
-        }
-      }
-    ]
+        "large": true,
+        "encode": {
+          "x": 0,
+          "y": 5,
+        },
+      },
+    ],
   };
-  return option
-}
+  return option;
+};
 
-export default {getKlineOption}
+export default { getKlineOption };

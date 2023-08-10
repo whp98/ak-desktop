@@ -13,8 +13,8 @@ const EChartsContainer: React.FC<Props> = ({options}) => {
     function handleResize() {
       if (chart && chartRef.current !== null) {
         chart.resize({
-          width: window.innerWidth-250,
-          height: window.innerHeight-250
+          "width": window.innerWidth-250,
+          "height": window.innerHeight-250
         });
         chart.setOption(options);
       }
@@ -39,9 +39,9 @@ const EChartsContainer: React.FC<Props> = ({options}) => {
     <div
       className="echarts-container"
       style={{
-        width: '100%',
-        height: '100%',
-        flex: 1
+        "width": '100%',
+        "height": '100%',
+        "flex": 1
       }}
       ref={chartRef}
     >

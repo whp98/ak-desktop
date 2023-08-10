@@ -13,7 +13,7 @@ export class Akrq {
   instance: AxiosInstance
 
   // 基础配置，url和超时时间
-  baseConfig: AxiosRequestConfig = {baseURL, timeout: 60000}
+  baseConfig: AxiosRequestConfig = {baseURL, "timeout": 60000}
 
   constructor(config: AxiosRequestConfig) {
     // 使用axios.create创建axios实例，配置为基础配置和我们传递进来的配置

@@ -19,16 +19,16 @@ const exitApp = (): void => {
 
 const createWindow = async () => {
   mainWindow = new BrowserWindow({
-    width: global.IS_DEV ? 1400 : 1400,
-    height: 600,
-    frame: true, // 取消window自带的关闭最小化等
+    "width": global.IS_DEV ? 1400 : 1400,
+    "height": 600,
+    "frame": true, // 取消window自带的关闭最小化等
     // resizable: false, // 禁止改变主窗口尺寸
-    webPreferences: {
-      nodeIntegration: false,
-      contextIsolation: true,
-      webSecurity: false,
-      devTools: global.IS_DEV,
-      preload: join(__dirname, '../preload/index.js'),
+    "webPreferences": {
+      "nodeIntegration": false,
+      "contextIsolation": true,
+      "webSecurity": false,
+      "devTools": global.IS_DEV,
+      "preload": join(__dirname, '../preload/index.js'),
     },
   });
   mainWindow.setMenu(null);

@@ -22,6 +22,10 @@
     }
   },
   "rules": {
+    "quote-props": [
+      "error",
+      "always"
+    ],
     "linebreak-style": 0,
     "arrow-parens": 0,
     "consistent-return": 1,
@@ -29,7 +33,12 @@
     "no-nested-ternary": 0,
     "no-tabs": 0,
     "no-mixed-spaces-and-tabs": 0,
-    "no-param-reassign": ["error", { "props": false }],
+    "no-param-reassign": [
+      "error",
+      {
+        "props": false
+      }
+    ],
     "max-len": 1,
     "import/extensions": 0,
     "import/no-extraneous-dependencies": 0,

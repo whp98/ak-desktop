@@ -8,19 +8,19 @@ i18n
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
-    ns: ['common'],
-    load: 'languageOnly',
-    defaultNS: 'common',
-    fallbackNS: 'common',
-    fallbackLng: 'en',
-    interpolation: {
-      escapeValue: false,
+    "ns": ['common'],
+    "load": 'languageOnly',
+    "defaultNS": 'common',
+    "fallbackNS": 'common',
+    "fallbackLng": 'en',
+    "interpolation": {
+      "escapeValue": false,
     },
-    react: {
-      useSuspense: false,
+    "react": {
+      "useSuspense": false,
     },
-    backend: {
-      loadPath: 'locales/{{lng}}/{{ns}}.json',
+    "backend": {
+      "loadPath": 'locales/{{lng}}/{{ns}}.json',
     },
   });
 
