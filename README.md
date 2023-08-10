@@ -51,3 +51,7 @@ proxy_cache_path "E:\\DEV_ENV\\nginx-1.21.6-blog\\cache" levels=1:2 keys_zone=ca
   ![oil-price.png](docs%2Fimg%2Foil-price.png)
 - ak黄金价格
   ![gold-price.png](docs%2Fimg%2Fgold-price.png)
+- ak分析师排行
+  ![rank-of-invest.png](docs%2Fimg%2Frank-of-invest.png)
+- ak分析师报告
+  ![report-of-invest.png](docs%2Fimg%2Freport-of-invest.png)
