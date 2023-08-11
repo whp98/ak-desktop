@@ -44,5 +44,10 @@ const SidebarData = [
     "path": '/investment-analyst-report',
     "icon": <FaChartLine />,
   },
+  {
+    "title": 'ak股票k线2',
+    "path": '/stock-candlestick2',
+    "icon": <MdBarChart />,
+  },
 ];
 export default SidebarData;

@@ -8,30 +8,60 @@ build `node v18.17.0`
 
 ## 请使用以下配置来用nginx缓存api请求结果
 
+主要原因是是akshare是爬虫实现，如果请求源地址多次可能会被封ip,本地缓存请求可以加快速度更加流畅。
 cache8080.conf
 
 ```conf
-# 用户请求端口28080,代理转发到8080端口
+# 用户请求端口28080,反向代理转发到8080端口,并为请求设置缓存
+
+proxy_cache_key $host$uri$is_args$args;
+# 定义缓存区域
+proxy_cache_path "E:\\DEV_ENV\\nginx-1.21.6-blog\\cache4h" levels=1:2 keys_zone=cache_zone:256m max_size=2G inactive=4h use_temp_path=off;
+proxy_cache_path "E:\\DEV_ENV\\nginx-1.21.6-blog\\cache1m" levels=1:2 keys_zone=cache_zone_1m:256m max_size=2G inactive=1m use_temp_path=off;
+# 服务器分组,如果有多台实例可以添加实现集群
+upstream backend {
+  server 127.0.0.1:8080;
+}
 server {
   listen 28080;
-
+  # 使用 .cache_m 的url后缀实现1分钟缓存
+  # 例如：http://127.0.0.1:28080/api/public/stock_zh_index_spot.cache_m
+  location ~ ^/(.*)\.cache_m$ {
+    add_header X-Cache $upstream_cache_status;#将缓存是否命中的结果返回
+    add_header X-Via $server_addr;#将缓存服务器IP返回
+    # 启用缓存,缓存到 keys_zone 指定的区域,空间大小为 1G
+    proxy_cache cache_zone_1m;
+    proxy_cache_key $host$uri$is_args$args;
+    expires 1m;
+    # 字符集
+    add_header Content-Type "application/json; charset=utf-8";
+    add_header x-1 "cache_m";
+    # 缓存时间
+    proxy_cache_valid any 1m;
+    proxy_ignore_headers X-Accel-Expires Expires Cache-Control Set-Cookie;
+    rewrite ^/(.*)\.cache_m$ /$1 break;
+    proxy_pass http://backend;
+  }
+  # 默认4小时缓存
+  # 例如：http://127.0.0.1:28080/api/public/stock_zh_index_spot
   location / {
-    proxy_pass http://localhost:8080;
-
+    add_header X-Cache $upstream_cache_status;#将缓存是否命中的结果返回
+    add_header X-Via $server_addr;#将缓存服务器IP返回
     # 启用缓存,缓存到 keys_zone 指定的区域,空间大小为 1G
     proxy_cache cache_zone;
     proxy_cache_key $host$uri$is_args$args;
-    expires 1d;
-    # 缓存时间为1天
-    proxy_cache_valid 200 302 1d;
-    proxy_cache_valid 301 1d;
-    proxy_cache_valid any 1d;
+    expires 4h;
+    # 字符集
+    add_header Content-Type "application/json; charset=utf-8";
+    add_header x-1 "/";
+    # 根据响应代码设置时间
+    proxy_cache_valid 200 302 4h;
+    proxy_cache_valid 301 4h;
+    proxy_cache_valid any 4h;
     proxy_ignore_headers X-Accel-Expires Expires Cache-Control Set-Cookie;
+    proxy_pass http://backend;
   }
 }
-
-# 定义缓存区域
-proxy_cache_path "E:\\DEV_ENV\\nginx-1.21.6-blog\\cache" levels=1:2 keys_zone=cache_zone:1024m max_size=10G inactive=60m use_temp_path=off;
 ```
 
 ## 特性
@@ -55,3 +85,5 @@ proxy_cache_path "E:\\DEV_ENV\\nginx-1.21.6-blog\\cache" levels=1:2 keys_zone=ca
   ![rank-of-invest.png](docs%2Fimg%2Frank-of-invest.png)
 - ak分析师报告
   ![report-of-invest.png](docs%2Fimg%2Freport-of-invest.png)
+- k线图2
+  ![k-line-2.png](docs%2Fimg%2Fk-line-2.png)

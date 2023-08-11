@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Stack,
   Table,
@@ -7,48 +7,38 @@ import {
   TableContainer,
   TableHead,
   TableRow,
-  TextField
+  TextField,
 } from '@mui/material';
-import PageLayout from "@/renderer/components/layout/PageLayout";
-import akrq from "@/renderer/api/Akrq";
+import PageLayout from '@/renderer/components/layout/PageLayout';
+import akrq from '@/renderer/api/Akrq';
 
-interface StockRow {
-  code: string;
-  name: string;
-}
-
-let list: StockRow[] = [];
-akrq.instance.get("stock_info_a_code_name")
-  .then(r => {
-    list = r.data;
-  })
 const AkStockTable = () => {
+  const [list, setList] = useState([
+    {
+      "code": '请加载数据',
+      "name": '请加载数据',
+    },
+  ]);
   const [filterText, setFilterText] = useState('');
   // eslint-disable-next-line no-undef
-  const [filterData, setFilterData] = useState<StockRow[]>([{
-    "code": '000001',
-    "name": '平安银行'
-  }]);
-  const blurHandler = () => {
-    const filteredData = list.filter(item => {
-      if (filterText === null || filterText === undefined || filterText === '') {
-        return true
-      }
-        return (item.name.toLowerCase().includes(filterText.toLowerCase())
-          || item.code.toLowerCase().includes(filterText.toLowerCase()))
-
+  const flushHandler = () => {
+    akrq.instance.get('stock_info_a_code_name').then((r) => {
+      setList(r.data);
     });
-    setFilterData(filteredData)
-  }
+  };
+  useEffect(() => {
+    flushHandler();
+  }, []);
   return (
     <PageLayout>
-      <Stack direction='column'>
-        <TextField
-          label="Search"
-          value={filterText}
-          onChange={e => setFilterText(e.target.value)}
-          onBlur={blurHandler}
-        />
+      <Stack direction="column">
+        <Stack display="flex" direction="row">
+          <TextField
+            label={`搜索${list.length}只股票`}
+            value={filterText}
+            onChange={(e) => setFilterText(e.target.value as string)}
+          />
+        </Stack>
         <TableContainer>
           <Table>
             <TableHead>
@@ -58,18 +48,28 @@ const AkStockTable = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {filterData.map(item => (
-                <TableRow key={item.code}>
-                  <TableCell>{item.code}</TableCell>
-                  <TableCell>{item.name}</TableCell>
-                </TableRow>
-              ))}
+              {list
+                .filter((item) => {
+                  if (filterText === null || filterText === undefined || filterText === '') {
+                    return true;
+                  }
+                  return (
+                    item.name.toLowerCase().includes(filterText.toLowerCase()) ||
+                    item.code.toLowerCase().includes(filterText.toLowerCase())
+                  );
+                })
+                .map((item) => (
+                  <TableRow key={item.code}>
+                    <TableCell>{item.code}</TableCell>
+                    <TableCell>{item.name}</TableCell>
+                  </TableRow>
+                ))}
             </TableBody>
           </Table>
         </TableContainer>
       </Stack>
     </PageLayout>
   );
-}
+};
 
 export default AkStockTable;

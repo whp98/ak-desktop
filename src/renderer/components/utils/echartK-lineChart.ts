@@ -99,8 +99,6 @@ export function generateOHLC(count: number) {
   }
   return data;
 }
-
-const dataCount = 2e5;
 // const data = generateOHLC(dataCount);
 
 const handleDateWrapper = (dataInput: any): DataItem[] | null => {
@@ -108,18 +106,19 @@ const handleDateWrapper = (dataInput: any): DataItem[] | null => {
   for (let i = 0; i < dataInput.length; i += 1) {
     const currVal = dataInput[i]
     res[i] = [
-      currVal['日期'].substring(0,10),
+      currVal['日期'].substring(0, 10),
       currVal['开盘'],
       currVal['最高'],
       currVal['最低'],
       currVal['收盘'],
-      currVal['成交额'],
+      currVal['成交量'],
+      getSign(res, i, +currVal['开盘'], +currVal['收盘'], 4), // sign
       /* currVal['成交量'],
       currVal['振幅'],
       currVal['涨跌幅'],
       currVal['涨跌额'],
       currVal['换手率'], */
-    ]
+    ];
   }
   return res;
 }
@@ -131,7 +130,7 @@ export const getKlineOption = (dataInput) => {
       "source": handleDateWrapper(dataInput),
     },
     "title": {
-      "text": `数据量: ${echarts.format.addCommas(dataCount)}`,
+      "text": `数据量: ${echarts.format.addCommas(dataInput.length)}`,
     },
     "tooltip": {
       "trigger": 'axis',

@@ -7,7 +7,7 @@ import Button from '@mui/material/Button';
 import { Stack } from '@mui/material';
 import Alert from '@mui/material/Alert';
 import akrq from '@/renderer/api/Akrq';
-import EChartsContainer from '@/renderer/components/base/EChartsContainer';
+import ECharts from '@/renderer/components/base/ECharts';
 import PageLayout from '@/renderer/components/layout/PageLayout';
 
 const AkCurrency = () => {
@@ -214,7 +214,7 @@ const AkCurrency = () => {
       >
         <Button onClick={buttonHandler}>刷新</Button>
         <Alert severity="info">兑换是指1人民币兑换外币数量,否则是1外币兑换人民币数量</Alert>
-        <EChartsContainer options={option} />
+        <ECharts option={option} />
       </Stack>
     </PageLayout>
   );

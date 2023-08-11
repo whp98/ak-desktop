@@ -4,7 +4,7 @@ import Button from '@mui/material/Button';
 import { useState } from 'react';
 import * as echarts from 'echarts';
 import { EChartsOption } from 'echarts';
-import EChartsContainer from '@/renderer/components/base/EChartsContainer';
+import ECharts from '@/renderer/components/base/ECharts';
 import PageLayout from '@/renderer/components/layout/PageLayout';
 import akrq from '@/renderer/api/Akrq';
 
@@ -152,7 +152,7 @@ const AkGoldPrice = () => {
         }}
       >
         <Button onClick={handleButton}>刷新黄金价格</Button>
-        <EChartsContainer options={options} />
+        <ECharts option={options} />
       </Stack>
     </PageLayout>
   );

@@ -5,9 +5,9 @@ import akrq from '@/renderer/api/Akrq';
 // import {getLineChartOptions} from '@/renderer/pages/utils/echartLine'
 import PageLayout from '@/renderer/components/layout/PageLayout';
 import { getKlineOption } from '@/renderer/components/utils/echartK-lineChart';
-import EChartsContainer from '@/renderer/components/base/EChartsContainer';
+import ECharts from '@/renderer/components/base/ECharts';
 
-const AkStockHis = (props) => {
+const AkStockCandlestickChart1 = (props) => {
   const [inputStock, setInputStock] = useState('600000');
   const [echartOptions, setechartOptions] = useState({});
 
@@ -36,11 +36,11 @@ const AkStockHis = (props) => {
           />
         </Stack>
         <Stack direction="row">
-          <EChartsContainer options={echartOptions} />
+          <ECharts option={echartOptions} />
         </Stack>
       </Stack>
     </PageLayout>
   );
 };
 
-export default AkStockHis;
+export default AkStockCandlestickChart1;

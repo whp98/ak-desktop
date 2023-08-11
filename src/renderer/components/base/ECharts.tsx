@@ -1,29 +1,38 @@
-import React, {useEffect, useRef} from 'react';
+import React, { useEffect, useRef } from 'react';
 import * as echarts from 'echarts';
-import ReactECharts from "echarts-for-react";
+import ReactECharts from 'echarts-for-react';
 
 interface Props {
-  options: echarts.EChartsOption;
+  option: echarts.EChartsOption;
+  // eslint-disable-next-line react/require-default-props
+  action?: object;
 }
 
-const EChartsContainer: React.FC<Props> = ({options}) => {
+const ECharts: React.FC<Props> = ({ option, action }: Props) => {
   const chartRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     let chart: any = {};
+
     function handleResize() {
       if (chart && chartRef.current !== null) {
         chart.resize({
-          "width": window.innerWidth-250,
-          "height": window.innerHeight-250
+          "width": window.innerWidth - 250,
+          "height": window.innerHeight - 250,
         });
-        chart.setOption(options);
+        chart.setOption(option);
+        if (action) {
+          chart.dispatchAction(action);
+        }
       }
     }
 
     if (chartRef.current !== null) {
       chart = echarts.init(chartRef.current);
       // 重要:设置option
-      chart.setOption(options);
+      chart.setOption(option);
+      if (action) {
+        chart.dispatchAction(action);
+      }
       handleResize();
       window.addEventListener('resize', handleResize);
     }
@@ -32,8 +41,8 @@ const EChartsContainer: React.FC<Props> = ({options}) => {
       if (chart) {
         chart.dispose();
       }
-    }
-  }, [options]);
+    };
+  }, [option, action]);
 
   return (
     <div
@@ -41,17 +50,12 @@ const EChartsContainer: React.FC<Props> = ({options}) => {
       style={{
         "width": '100%',
         "height": '100%',
-        "flex": 1
+        "flex": 1,
       }}
       ref={chartRef}
     >
-      <ReactECharts
-        option={options}
-        notMerge
-        lazyUpdate
-      />
+      <ReactECharts option={option} notMerge lazyUpdate />
     </div>
-  )
-
+  );
 };
-export default EChartsContainer;
+export default ECharts;

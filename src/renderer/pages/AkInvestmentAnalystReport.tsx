@@ -5,7 +5,7 @@ import * as echarts from 'echarts';
 import JsonTable from '@/renderer/components/base/JsonTable';
 import akrq from '@/renderer/api/Akrq';
 import jsonMapToArray from '@/renderer/components/utils/tableUtils';
-import EChartsContainer from '@/renderer/components/base/EChartsContainer';
+import ECharts from '@/renderer/components/base/ECharts';
 
 const AkInvestmentAnalystReport = () => {
   const [analystId, setAnalystId] = useState('11000239662');
@@ -154,7 +154,7 @@ const AkInvestmentAnalystReport = () => {
       </TableContainer>
       <TableContainer>
         <h5>历史指数</h5>
-        <EChartsContainer options={op1} />
+        <ECharts option={op1} />
       </TableContainer>
     </div>
   );
