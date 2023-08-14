@@ -12,6 +12,7 @@ import AkGoldPrice from '@/renderer/pages/AkGoldPrice';
 import AkInvestmentAnalyst from '@/renderer/pages/AkInvestmentAnalyst';
 import AkInvestmentAnalystReport from '@/renderer/pages/AkInvestmentAnalystReport';
 import AkStockCandlestickChart2 from '@/renderer/pages/AkStockCandlestickChart2';
+import AkIndexCenter from '@/renderer/pages/AkIndexCenter';
 
 const App: React.FunctionComponent = () => (
   // eslint-disable-next-line react/jsx-no-useless-fragment
@@ -28,6 +29,7 @@ const App: React.FunctionComponent = () => (
           <Route path="investment-analyst-rank" element={<AkInvestmentAnalyst />} />
           <Route path="investment-analyst-report" element={<AkInvestmentAnalystReport />} />
           <Route path="stock-candlestick2" element={<AkStockCandlestickChart2 />} />
+          <Route path="index-center" element={<AkIndexCenter />} />
         </Route>
         <Route path="*" element={<Err404 />} />
       </Routes>

@@ -87,3 +87,5 @@ server {
   ![report-of-invest.png](docs%2Fimg%2Freport-of-invest.png)
 - k线图2
   ![k-line-2.png](docs%2Fimg%2Fk-line-2.png)
+- 指数中心
+  ![index-center.png](docs%2Fimg%2Findex-center.png)

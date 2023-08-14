@@ -2,6 +2,7 @@ import React from 'react';
 import { MdBarChart, MdCurrencyExchange, MdInfo, MdOilBarrel, MdStickyNote2 } from 'react-icons/md';
 import { AiFillGold } from 'react-icons/ai';
 import { FaChartLine, FaRankingStar } from 'react-icons/fa6';
+import { BiSearchAlt2 } from 'react-icons/bi';
 
 const SidebarData = [
   {
@@ -48,6 +49,11 @@ const SidebarData = [
     "title": 'ak股票k线2',
     "path": '/stock-candlestick2',
     "icon": <MdBarChart />,
+  },
+  {
+    "title": '指数中心',
+    "path": '/index-center',
+    "icon": <BiSearchAlt2 />,
   },
 ];
 export default SidebarData;
