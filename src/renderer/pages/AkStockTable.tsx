@@ -1,16 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import {
-  Stack,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  TextField,
-} from '@mui/material';
+import { Stack, TableContainer, TextField } from '@mui/material';
+import Button from '@mui/material/Button';
+import { useNavigate } from 'react-router-dom';
 import PageLayout from '@/renderer/components/layout/PageLayout';
 import akrq from '@/renderer/api/Akrq';
+import JsonTable from '@/renderer/components/base/JsonTable';
 
 const AkStockTable = () => {
   const [list, setList] = useState([
@@ -26,6 +20,21 @@ const AkStockTable = () => {
       setList(r.data);
     });
   };
+  const navigate = useNavigate();
+  const optGroup = [
+    {
+      "text": 'k线1',
+      "handler": (row) => {
+        navigate('/stock-candlestick1', { "state": row });
+      },
+    },
+    {
+      "text": 'k线2',
+      "handler": (row) => {
+        navigate('/stock-candlestick2', { "state": row });
+      },
+    },
+  ];
   useEffect(() => {
     flushHandler();
   }, []);
@@ -33,6 +42,7 @@ const AkStockTable = () => {
     <PageLayout>
       <Stack direction="column">
         <Stack display="flex" direction="row">
+          <Button onClick={flushHandler}>刷新</Button>
           <TextField
             label={`搜索${list.length}只股票`}
             value={filterText}
@@ -40,32 +50,20 @@ const AkStockTable = () => {
           />
         </Stack>
         <TableContainer>
-          <Table>
-            <TableHead>
-              <TableRow>
-                <TableCell>代码</TableCell>
-                <TableCell>名称</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {list
-                .filter((item) => {
-                  if (filterText === null || filterText === undefined || filterText === '') {
-                    return true;
-                  }
-                  return (
-                    item.name.toLowerCase().includes(filterText.toLowerCase()) ||
-                    item.code.toLowerCase().includes(filterText.toLowerCase())
-                  );
-                })
-                .map((item) => (
-                  <TableRow key={item.code}>
-                    <TableCell>{item.code}</TableCell>
-                    <TableCell>{item.name}</TableCell>
-                  </TableRow>
-                ))}
-            </TableBody>
-          </Table>
+          <JsonTable
+            optGroup={optGroup}
+            data={list
+              .filter((item) => {
+                if (filterText === null || filterText === undefined || filterText === '') {
+                  return true;
+                }
+                return (
+                  item.name.toLowerCase().includes(filterText.toLowerCase()) ||
+                  item.code.toLowerCase().includes(filterText.toLowerCase())
+                );
+              })
+              .filter((item, index) => index < 10)}
+          />
         </TableContainer>
       </Stack>
     </PageLayout>

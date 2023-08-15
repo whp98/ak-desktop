@@ -3,19 +3,31 @@
 
 import React, { useEffect, useState } from 'react';
 import { Button, TableContainer } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 import JsonTable from '@/renderer/components/base/JsonTable';
 import akrq from '@/renderer/api/Akrq';
 
 const AkIndexCenter = () => {
   const [data, setData] = useState([{}]);
+  const navigate = useNavigate();
+
   const handleSearch = () => {
-    akrq.instance.get('stock_zh_index_spot', {}).then((r) => {
+    akrq.instance.get('stock_zh_index_spot.cache_m', {}).then((r) => {
       setData(r.data);
     });
   };
   useEffect(() => {
     handleSearch();
   }, []);
+
+  const optGroup = [
+    {
+      "text": '查看',
+      "handler": (row) => {
+        navigate('/index-daily', { "state":row });
+      },
+    },
+  ];
 
   return (
     <div style={{ "display": 'flex', "flexDirection": 'column' }}>
@@ -31,7 +43,7 @@ const AkIndexCenter = () => {
         </Button>
       </div>
       <TableContainer>
-        <JsonTable data={data} />
+        <JsonTable data={data} optGroup={optGroup} />
       </TableContainer>
     </div>
   );

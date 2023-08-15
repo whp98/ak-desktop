@@ -2,7 +2,8 @@ import React from 'react';
 import { MdBarChart, MdCurrencyExchange, MdInfo, MdOilBarrel, MdStickyNote2 } from 'react-icons/md';
 import { AiFillGold } from 'react-icons/ai';
 import { FaChartLine, FaRankingStar } from 'react-icons/fa6';
-import { BiSearchAlt2 } from 'react-icons/bi';
+import { RiStockLine, RiTimeLine } from 'react-icons/ri';
+import { BsTable } from 'react-icons/bs';
 
 const SidebarData = [
   {
@@ -10,15 +11,21 @@ const SidebarData = [
     "path": '/',
     "icon": <MdInfo />,
   },
-  {
-    "title": 'ak股票k线',
-    "path": '/stock',
-    "icon": <MdBarChart />,
-  },
+
   {
     "title": 'ak股票列表',
     "path": '/stock-list',
     "icon": <MdStickyNote2 />,
+  },
+  {
+    "title": 'ak股票k线1',
+    "path": '/stock-candlestick1',
+    "icon": <MdBarChart />,
+  },
+  {
+    "title": 'ak股票k线2',
+    "path": '/stock-candlestick2',
+    "icon": <MdBarChart />,
   },
   {
     "title": 'ak汇率外汇管理局',
@@ -45,15 +52,20 @@ const SidebarData = [
     "path": '/investment-analyst-report',
     "icon": <FaChartLine />,
   },
-  {
-    "title": 'ak股票k线2',
-    "path": '/stock-candlestick2',
-    "icon": <MdBarChart />,
-  },
+
   {
     "title": '指数中心',
     "path": '/index-center',
-    "icon": <BiSearchAlt2 />,
+    "icon": (
+      <div>
+        <BsTable /> <RiTimeLine />
+      </div>
+    ),
+  },
+  {
+    "title": '指数详情',
+    "path": '/index-daily',
+    "icon": <RiStockLine />,
   },
 ];
 export default SidebarData;

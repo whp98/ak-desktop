@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Stack } from '@mui/material';
 import TextField from '@mui/material/TextField';
+import {useLocation} from "react-router-dom";
 import akrq from '@/renderer/api/Akrq';
 // import {getLineChartOptions} from '@/renderer/pages/utils/echartLine'
 import PageLayout from '@/renderer/components/layout/PageLayout';
@@ -12,9 +13,12 @@ const AkStockCandlestickChart2 = (props) => {
   const [inputStock, setInputStock] = useState('600000');
   const [echartOptions, setechartOptions] = useState({});
   const [echartAction, setechartAction] = useState({});
-
+  const { state } = useLocation();
   // 每当props改变的时候就会实时重新渲染
   useEffect(() => {
+    if (state && state.code) {
+      setInputStock(state.code);
+    }
     akrq.instance.get('stock_zh_a_hist', { "params": { "symbol": inputStock } }).then((r) => {
       // const myOptions = getKlineOption(r.data)
       const dataArr = handleDateWrapper(r.data);
@@ -23,19 +27,6 @@ const AkStockCandlestickChart2 = (props) => {
       setechartOptions(myOptions);
       setechartAction(myAction);
     });
-    /* akrq.instance
-      .get('https://echarts.apache.org/examples/data/asset/data/stock-DJI.json', {
-        "params": { "symbol": inputStock },
-      })
-      .then((r) => {
-        // const myOptions = getKlineOption(r.data)
-        const dataArr = r.data;
-        const myOptions = getOption(dataArr);
-        // const myAction = getAction('2021-01-01', '2023-01-01');
-        setechartOptions(myOptions);
-        // setechartAction(myAction);
-        setechartAction({});
-      }); */
   }, [props, inputStock]);
   return (
     <PageLayout>

@@ -10,7 +10,6 @@ function splitData(rawData: number[][]) {
     values.push(rawData[i]);
     volumes.push([i, rawData[i][4], rawData[i][0] > rawData[i][1] ? 1 : -1]);
   }
-  console.log(volumes);
   return {
     "categoryData": categoryData,
     "values": values,
