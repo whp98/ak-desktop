@@ -1,7 +1,7 @@
 // 油价历史 energy_oil_hist
 import { Stack } from '@mui/material';
 import Button from '@mui/material/Button';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import * as echarts from 'echarts';
 import { EChartsOption } from 'echarts';
 import ECharts from '@/renderer/components/base/ECharts';
@@ -117,7 +117,9 @@ const AkOilPrice = () => {
       dataHandler(r.data);
     });
   };
-
+  useEffect(() => {
+    handleButton();
+  }, []);
   return (
     <PageLayout>
       <Stack
@@ -126,6 +128,7 @@ const AkOilPrice = () => {
           "direction": 'column',
         }}
       >
+        <Stack fontSize="18px">油价每吨</Stack>
         <Button onClick={handleButton}>刷新油价</Button>
         <ECharts option={options} />
       </Stack>

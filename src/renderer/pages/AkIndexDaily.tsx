@@ -1,7 +1,7 @@
 // 股票指数行情 stock_zh_index_daily
 import React, { useEffect, useState } from 'react';
 import { Button, Stack, TextField } from '@mui/material';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import akrq from '@/renderer/api/Akrq';
 import { getOption } from '@/renderer/components/utils/echartCandlestickChart2';
 import ECharts from '@/renderer/components/base/ECharts';
@@ -29,7 +29,14 @@ const AkIndexDaily = () => {
   };
   const [echartOptions, setechartOptions] = useState({});
   const [index, setIndex] = useState('sh000001');
+  const [name, setName] = useState('');
+
   const { state } = useLocation();
+  // 返回列表
+  const nav = useNavigate();
+  const backToList = () => {
+    nav('/index-center');
+  };
   const handleSearch = () => {
     akrq.instance
       .get('stock_zh_index_daily', {
@@ -46,6 +53,7 @@ const AkIndexDaily = () => {
   useEffect(() => {
     if (state && state['代码']) {
       setIndex(state['代码']);
+      setName(state['名称']);
     }
     handleSearch();
   }, [index]);
@@ -67,7 +75,13 @@ const AkIndexDaily = () => {
         <Button variant="contained" onClick={handleSearch}>
           刷新
         </Button>
+        <Button variant="outlined" onClick={backToList}>
+          返回列表
+        </Button>
       </div>
+      <Stack direction="row" alignItems="center" justifyContent="center" fontSize="16px">
+        {name}
+      </Stack>
       <Stack direction="row">
         <ECharts option={echartOptions} />
       </Stack>

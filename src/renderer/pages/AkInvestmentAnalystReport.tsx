@@ -1,7 +1,8 @@
 // 投资分析师报告 stock_analyst_rank_em
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, TableContainer, TextField } from '@mui/material';
 import * as echarts from 'echarts';
+import { useLocation, useNavigate } from 'react-router-dom';
 import JsonTable from '@/renderer/components/base/JsonTable';
 import akrq from '@/renderer/api/Akrq';
 import jsonMapToArray from '@/renderer/components/utils/tableUtils';
@@ -12,7 +13,7 @@ const AkInvestmentAnalystReport = () => {
   const [data, setData] = useState([{}]);
   const [data1, setData1] = useState([{}]);
   const [op1, setOp1] = useState({});
-
+  const { state } = useLocation();
   const handleSearch = () => {
     akrq.instance
       .get('stock_analyst_detail_em', {
@@ -125,7 +126,19 @@ const AkInvestmentAnalystReport = () => {
         });
       });
   };
+  // 返回分析师排行
+  const nav = useNavigate();
+  const backToList = () => {
+    nav('/investment-analyst-rank');
+  };
 
+  // 每当props改变的时候就会实时重新渲染
+  useEffect(() => {
+    if (state && state['分析师ID']) {
+      setAnalystId(state['分析师ID']);
+    }
+    handleSearch();
+  }, [analystId]);
   return (
     <div style={{ "display": 'flex', "flexDirection": 'column' }}>
       <div
@@ -142,6 +155,9 @@ const AkInvestmentAnalystReport = () => {
         />
         <Button variant="contained" onClick={handleSearch}>
           查询
+        </Button>
+        <Button variant="outlined" onClick={backToList}>
+          返回排行
         </Button>
       </div>
       <TableContainer>

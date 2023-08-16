@@ -1,7 +1,7 @@
 // 黄金基准价格 spot_golden_benchmark_sge
 import { Stack } from '@mui/material';
 import Button from '@mui/material/Button';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import * as echarts from 'echarts';
 import { EChartsOption } from 'echarts';
 import ECharts from '@/renderer/components/base/ECharts';
@@ -10,7 +10,6 @@ import akrq from '@/renderer/api/Akrq';
 
 const AkGoldPrice = () => {
   const [options, setOptions] = useState<EChartsOption>({});
-
   function dataHandler(dataInput: any) {
     const res: any = [];
     for (let i = 0; i < dataInput.length; i += 1) {
@@ -142,7 +141,9 @@ const AkGoldPrice = () => {
       dataHandler(r.data);
     });
   };
-
+  useEffect(() => {
+    handleButton();
+  }, []);
   return (
     <PageLayout>
       <Stack

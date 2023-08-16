@@ -1,6 +1,6 @@
 // currency_boc_safe
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import * as echarts from 'echarts';
 import { EChartsOption } from 'echarts';
 import Button from '@mui/material/Button';
@@ -202,6 +202,9 @@ const AkCurrency = () => {
       dataHandler(data);
     });
   };
+  useEffect(() => {
+    buttonHandler();
+  }, []);
   return (
     <PageLayout>
       <Stack

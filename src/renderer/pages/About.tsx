@@ -13,17 +13,14 @@ const About = () => {
   // const counterValue = useSelector((state: RootState) => state.appScreen.counterValue);
   // const [t] = useTranslation(['common']);
   const dispatch = useDispatch();
-
   const handleGithubLink = async (): Promise<void> => {
     await window.mainApi.send('msgOpenExternalLink', 'https://github.com/whp98/ak-desktop');
   };
-
   useEffect(() => {
     // Get application version from package.json version string (Using IPC communication)
     window.mainApi.receive('msgReceivedVersion', (event, version: string) => {
       dispatch(setVersion(version));
     });
-
     window.mainApi.send('msgRequestGetVersion');
   }, []);
 
@@ -36,11 +33,14 @@ const About = () => {
             "flexDirection": 'column',
           }}
         >
-          <List sx={{}} component="nav" aria-label="mailbox folders">
+          <List component="nav" aria-label="mailbox folders">
             <ListItemButton>
               <ListItemText primary="关于" />
             </ListItemButton>
             <Divider />
+            <ListItemButton>
+              <ListItemText primary="ak-desktop" />
+            </ListItemButton>
             <ListItemButton>
               <ListItemText primary={`版本${appVersion}`} />
             </ListItemButton>
