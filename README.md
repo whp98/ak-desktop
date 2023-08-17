@@ -33,8 +33,6 @@ server {
     proxy_cache cache_zone_1m;
     proxy_cache_key $host$uri$is_args$args;
     expires 1m;
-    # 字符集
-    add_header Content-Type "application/json; charset=utf-8";
     add_header x-1 "cache_m";
     # 缓存时间
     proxy_cache_valid any 1m;
@@ -51,8 +49,6 @@ server {
     proxy_cache cache_zone;
     proxy_cache_key $host$uri$is_args$args;
     expires 4h;
-    # 字符集
-    add_header Content-Type "application/json; charset=utf-8";
     add_header x-1 "/";
     # 根据响应代码设置时间
     proxy_cache_valid 200 302 4h;
