@@ -85,3 +85,5 @@ server {
   ![k-line-2.png](docs%2Fimg%2Fk-line-2.png)
 - 指数中心
   ![index-center.png](docs%2Fimg%2Findex-center.png)
+- 银行拆借利率
+  ![bank-rate-his.png](docs%2Fimg%2Fbank-rate-his.png)
