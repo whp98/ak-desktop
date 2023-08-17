@@ -1,5 +1,5 @@
 import React from 'react';
-import { MdCurrencyExchange, MdInfo, MdOilBarrel, MdStickyNote2 } from 'react-icons/md';
+import { MdCurrencyExchange, MdInfo, MdOilBarrel, MdRadio, MdStickyNote2 } from 'react-icons/md';
 import { AiFillGold } from 'react-icons/ai';
 import { FaRankingStar } from 'react-icons/fa6';
 import { RiTimeLine } from 'react-icons/ri';
@@ -60,6 +60,11 @@ const SidebarData = [
         <BsTable /> <RiTimeLine />
       </div>
     ),
+  },
+  {
+    "title": '银行拆借利率调整',
+    "path": '/bank-rate-his',
+    "icon": <MdRadio />,
   },
   /* {
     "title": '指数详情',

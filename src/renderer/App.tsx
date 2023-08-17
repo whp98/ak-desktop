@@ -14,6 +14,7 @@ import AkInvestmentAnalystReport from '@/renderer/pages/AkInvestmentAnalystRepor
 import AkStockCandlestickChart2 from '@/renderer/pages/AkStockCandlestickChart2';
 import AkIndexCenter from '@/renderer/pages/AkIndexCenter';
 import AkIndexDaily from '@/renderer/pages/AkIndexDaily';
+import AkBankRateChart from '@/renderer/pages/AkBankRateChart';
 
 const App: React.FunctionComponent = () => (
   // eslint-disable-next-line react/jsx-no-useless-fragment
@@ -32,6 +33,7 @@ const App: React.FunctionComponent = () => (
           <Route path="stock-candlestick2" element={<AkStockCandlestickChart2 />} />
           <Route path="index-center" element={<AkIndexCenter />} />
           <Route path="index-daily" element={<AkIndexDaily />} />
+          <Route path="bank-rate-his" element={<AkBankRateChart />} />
         </Route>
         <Route path="*" element={<Err404 />} />
       </Routes>
