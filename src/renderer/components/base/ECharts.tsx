@@ -1,6 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 import * as echarts from 'echarts';
 import ReactECharts from 'echarts-for-react';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/renderer/store';
 
 interface Props {
   option: echarts.EChartsOption;
@@ -10,6 +12,8 @@ interface Props {
 
 const ECharts: React.FC<Props> = ({ option, action }: Props) => {
   const chartRef = useRef<HTMLDivElement>(null);
+  // 自适应深色模式
+  const darkTheme = useSelector((state: RootState) => state.appScreen.darkTheme);
   useEffect(() => {
     let chart: any = {};
 
@@ -27,7 +31,7 @@ const ECharts: React.FC<Props> = ({ option, action }: Props) => {
     }
 
     if (chartRef.current !== null) {
-      chart = echarts.init(chartRef.current);
+      chart = echarts.init(chartRef.current, darkTheme ? 'dark' : 'light');
       // 重要:设置option
       chart.setOption(option);
       if (action) {
@@ -42,8 +46,7 @@ const ECharts: React.FC<Props> = ({ option, action }: Props) => {
         chart.dispose();
       }
     };
-  }, [option, action]);
-
+  }, [option, action, darkTheme]);
   return (
     <div
       className="echarts-container"

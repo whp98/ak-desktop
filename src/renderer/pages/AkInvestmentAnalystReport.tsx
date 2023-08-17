@@ -1,6 +1,6 @@
 // 投资分析师报告 stock_analyst_rank_em
 import React, { useEffect, useState } from 'react';
-import { Button, TableContainer, TextField } from '@mui/material';
+import { Button, Stack, TableContainer, TextField } from '@mui/material';
 import * as echarts from 'echarts';
 import { useLocation, useNavigate } from 'react-router-dom';
 import JsonTable from '@/renderer/components/base/JsonTable';
@@ -161,15 +161,21 @@ const AkInvestmentAnalystReport = () => {
         </Button>
       </div>
       <TableContainer>
-        <h5>最新跟踪成分股</h5>
+        <Stack direction="row" fontSize="16px">
+          最新跟踪成分股
+        </Stack>
         <JsonTable data={data} />
       </TableContainer>
       <TableContainer>
-        <h5>历史跟踪成分股</h5>
+        <Stack direction="row" fontSize="16px">
+          历史跟踪成分股
+        </Stack>
         <JsonTable data={data1} />
       </TableContainer>
       <TableContainer>
-        <h5>历史指数</h5>
+        <Stack direction="row" fontSize="16px">
+          历史指数
+        </Stack>
         <ECharts option={op1} />
       </TableContainer>
     </div>
