@@ -15,6 +15,9 @@ import AkStockCandlestickChart2 from '@/renderer/pages/AkStockCandlestickChart2'
 import AkIndexCenter from '@/renderer/pages/AkIndexCenter';
 import AkIndexDaily from '@/renderer/pages/AkIndexDaily';
 import AkBankRateChart from '@/renderer/pages/AkBankRateChart';
+import AkNewsComponent from '@/renderer/pages/AkNewsComponent';
+import AkCustomsImportandExport from '@/renderer/pages/AkCustomsImportandExport';
+import AkConsumerConfidence from '@/renderer/pages/AkConsumerConfidence';
 
 const App: React.FunctionComponent = () => (
   // eslint-disable-next-line react/jsx-no-useless-fragment
@@ -34,6 +37,9 @@ const App: React.FunctionComponent = () => (
           <Route path="index-center" element={<AkIndexCenter />} />
           <Route path="index-daily" element={<AkIndexDaily />} />
           <Route path="bank-rate-his" element={<AkBankRateChart />} />
+          <Route path="news_cctv" element={<AkNewsComponent />} />
+          <Route path="cust_import_export" element={<AkCustomsImportandExport />} />
+          <Route path="cust_consumer_confidence" element={<AkConsumerConfidence />} />
         </Route>
         <Route path="*" element={<Err404 />} />
       </Routes>

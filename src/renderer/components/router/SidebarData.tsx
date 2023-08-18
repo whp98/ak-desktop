@@ -1,5 +1,14 @@
 import React from 'react';
-import { MdCurrencyExchange, MdInfo, MdOilBarrel, MdRadio, MdStickyNote2 } from 'react-icons/md';
+import {
+  MdCurrencyExchange,
+  MdInfo,
+  MdInfoOutline,
+  MdMan3,
+  MdNewspaper,
+  MdOilBarrel,
+  MdRadio,
+  MdStickyNote2,
+} from 'react-icons/md';
 import { AiFillGold } from 'react-icons/ai';
 import { FaRankingStar } from 'react-icons/fa6';
 import { RiTimeLine } from 'react-icons/ri';
@@ -65,6 +74,21 @@ const SidebarData = [
     "title": '银行拆借利率调整',
     "path": '/bank-rate-his',
     "icon": <MdRadio />,
+  },
+  {
+    "title": 'cctv新闻',
+    "path": '/news_cctv',
+    "icon": <MdNewspaper />,
+  },
+  {
+    "title": '进出口',
+    "path": '/cust_import_export',
+    "icon": <MdInfoOutline />,
+  },
+  {
+    "title": '消费者信心',
+    "path": '/cust_consumer_confidence',
+    "icon": <MdMan3 />,
   },
   /* {
     "title": '指数详情',

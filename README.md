@@ -87,3 +87,9 @@ server {
   ![index-center.png](docs%2Fimg%2Findex-center.png)
 - 银行拆借利率
   ![bank-rate-his.png](docs%2Fimg%2Fbank-rate-his.png)
+- 新闻联播稿
+  ![cctv-news.png](docs%2Fimg%2Fcctv-news.png)
+- 进出口数据
+  ![import-export.png](docs%2Fimg%2Fimport-export.png)
+- 消费者信心
+  ![comsumer-confidence.png](docs%2Fimg%2Fcomsumer-confidence.png)
