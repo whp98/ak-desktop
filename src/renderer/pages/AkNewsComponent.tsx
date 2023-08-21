@@ -9,11 +9,9 @@ function AkNewsComponent() {
   const [selectedDate, setSelectedDate] = useState(moment().subtract(1, 'day'));
   const [news, setNews] = useState([{ "title": '', "date": '', "content": '' }]);
   const fetchNews = (date) => {
-    akrq.instance
-      .get('news_cctv', { "params": { "date": moment(date).format('YYYYMMDD') } })
-      .then((e) => {
-        setNews(e.data);
-      });
+    akrq.get('news_cctv', { "params": { "date": moment(date).format('YYYYMMDD') } }).then((e) => {
+      setNews(e.data);
+    });
   };
   useEffect(() => {
     // 从服务器获取选定日期的新闻
@@ -25,12 +23,14 @@ function AkNewsComponent() {
 
   return (
     <Box>
-      <Box sx={{
-        "display":'flex',
-        "direction":'row',
-        "alignItems":'center',
-        "justifyContent":'center'
-      }}>
+      <Box
+        sx={{
+          "display": 'flex',
+          "direction": 'row',
+          "alignItems": 'center',
+          "justifyContent": 'center',
+        }}
+      >
         <LocalizationProvider dateAdapter={AdapterMoment}>
           <DatePicker value={selectedDate} onChange={handleDateChange} />
         </LocalizationProvider>

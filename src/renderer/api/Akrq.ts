@@ -1,16 +1,14 @@
 // index.ts
-import type { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
+import type {AxiosInstance, AxiosRequestConfig, AxiosResponse} from 'axios';
 import axios from 'axios';
-
-const baseURL =
-  process.env.NODE_ENV === 'development'
-    ? 'http://127.0.0.1:38080/api/public'
-    : 'http://127.0.0.1:38080/api/public';
 
 // 导出Request，可以用来自定义传递配置来创建实例
 export class Akrq {
   // 基础配置，url和超时时间
-  private baseConfig: AxiosRequestConfig = { baseURL, "timeout": 60000 };
+  private baseConfig: AxiosRequestConfig = {
+    "baseURL": 'http://127.0.0.1:38080/api/public',
+    "timeout": 60000,
+  };
 
   // axios 实例
   private instance: AxiosInstance;

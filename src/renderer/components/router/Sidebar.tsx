@@ -24,7 +24,6 @@ import { setDarkTheme } from '@/renderer/store/slices/appScreenSlice';
 import SidebarData from '@/renderer/components/router/SidebarData';
 import PageLayout from '@/renderer/components/layout/PageLayout';
 import { setIp, setPort } from '@/renderer/store/slices/appAkURLSlice';
-import akrq from '@/renderer/api/Akrq';
 
 const drawerWidth = 240;
 
@@ -106,11 +105,9 @@ const Sidebar: React.FunctionComponent<Props> = ({ children }) => {
   };
   const handleChangeIp = (newip) => {
     dispatch(setIp(newip));
-    akrq.changeBaseUrl(newip, port);
   };
   const handleChangePort = (newport) => {
     dispatch(setPort(newport));
-    akrq.changeBaseUrl(ip, newport);
   };
   const toggleDrawer =
     (anchor: string, open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
