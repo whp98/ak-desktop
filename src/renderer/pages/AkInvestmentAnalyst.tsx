@@ -10,7 +10,7 @@ const AkInvestmentAnalyst = () => {
   const [data, setData] = useState([{}]);
 
   const handleSearch = () => {
-    akrq.instance.get('stock_analyst_rank_em', { "params": { year } }).then((r) => {
+    akrq.get('stock_analyst_rank_em', { "params": { year } }).then((r) => {
       setData(r.data);
     });
   };

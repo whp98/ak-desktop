@@ -109,7 +109,7 @@ const AkBankRateChart = () => {
   }
 
   const handleButton = () => {
-    akrq.instance.get('rate_interbank').then((r) => {
+    akrq.get('rate_interbank').then((r) => {
       dataHandler(r.data);
     });
   };

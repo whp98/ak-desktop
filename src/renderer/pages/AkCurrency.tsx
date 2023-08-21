@@ -197,7 +197,7 @@ const AkCurrency = () => {
   }
 
   const buttonHandler = () => {
-    akrq.instance.get('currency_boc_safe').then((r) => {
+    akrq.get('currency_boc_safe').then((r) => {
       const { data } = r;
       dataHandler(data);
     });

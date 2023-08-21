@@ -12,7 +12,7 @@ const AkIndexCenter = () => {
   const navigate = useNavigate();
 
   const handleSearch = () => {
-    akrq.instance.get('stock_zh_index_spot.cache_m', {}).then((r) => {
+    akrq.get('stock_zh_index_spot.cache_m', {}).then((r) => {
       setData(r.data);
     });
   };
@@ -24,7 +24,7 @@ const AkIndexCenter = () => {
     {
       "text": '查看',
       "handler": (row) => {
-        navigate('/index-daily', { "state":row });
+        navigate('/index-daily', { "state": row });
       },
     },
   ];

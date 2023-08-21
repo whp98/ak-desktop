@@ -16,7 +16,7 @@ const AkStockTable = () => {
   const [filterText, setFilterText] = useState('');
   // eslint-disable-next-line no-undef
   const flushHandler = () => {
-    akrq.instance.get('stock_info_a_code_name').then((r) => {
+    akrq.get('stock_info_a_code_name').then((r) => {
       setList(r.data);
     });
   };

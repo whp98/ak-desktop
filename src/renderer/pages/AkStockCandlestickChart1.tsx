@@ -20,7 +20,7 @@ const AkStockCandlestickChart1 = (props) => {
       setInputStock(state.code);
       setName(state.name);
     }
-    akrq.instance.get('stock_zh_a_hist', { "params": { "symbol": inputStock } }).then((r) => {
+    akrq.get('stock_zh_a_hist', { "params": { "symbol": inputStock } }).then((r) => {
       // const myOptions = getKlineOption(r.data)
       const myOptions = getKlineOption(r.data);
       setechartOptions(myOptions);

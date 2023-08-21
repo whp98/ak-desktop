@@ -8,7 +8,7 @@ const AkInvestmentAnalyst = () => {
   const [data, setData] = useState([{}]);
 
   const handleSearch = () => {
-    akrq.instance.get('macro_china_xfzxx').then((r) => {
+    akrq.get('macro_china_xfzxx').then((r) => {
       setData(r.data);
     });
   };

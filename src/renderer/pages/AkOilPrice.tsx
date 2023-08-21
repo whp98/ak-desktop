@@ -113,7 +113,7 @@ const AkOilPrice = () => {
   }
 
   const handleButton = () => {
-    akrq.instance.get('energy_oil_hist').then((r) => {
+    akrq.get('energy_oil_hist').then((r) => {
       dataHandler(r.data);
     });
   };

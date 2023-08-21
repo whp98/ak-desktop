@@ -137,7 +137,7 @@ const AkGoldPrice = () => {
   }
 
   const handleButton = () => {
-    akrq.instance.get('spot_golden_benchmark_sge').then((r) => {
+    akrq.get('spot_golden_benchmark_sge').then((r) => {
       dataHandler(r.data);
     });
   };

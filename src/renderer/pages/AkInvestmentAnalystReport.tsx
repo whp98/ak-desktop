@@ -15,7 +15,7 @@ const AkInvestmentAnalystReport = () => {
   const [op1, setOp1] = useState({});
   const { state } = useLocation();
   const handleSearch = () => {
-    akrq.instance
+    akrq
       .get('stock_analyst_detail_em', {
         "params": {
           "analyst_id": analystId,
@@ -25,7 +25,7 @@ const AkInvestmentAnalystReport = () => {
       .then((r) => {
         setData(r.data);
       });
-    akrq.instance
+    akrq
       .get('stock_analyst_detail_em', {
         "params": {
           "analyst_id": analystId,
@@ -35,7 +35,7 @@ const AkInvestmentAnalystReport = () => {
       .then((r) => {
         setData1(r.data);
       });
-    akrq.instance
+    akrq
       .get('stock_analyst_detail_em', {
         "params": {
           "analyst_id": analystId,

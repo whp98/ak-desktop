@@ -38,7 +38,7 @@ const AkIndexDaily = () => {
     nav('/index-center');
   };
   const handleSearch = () => {
-    akrq.instance
+    akrq
       .get('stock_zh_index_daily', {
         "params": {
           "symbol": index,

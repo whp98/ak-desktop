@@ -18,10 +18,13 @@ import {
 } from '@mui/material';
 import { styled, useTheme } from '@mui/material/styles';
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
+import TextField from '@mui/material/TextField';
 import { RootState } from '@/renderer/store';
 import { setDarkTheme } from '@/renderer/store/slices/appScreenSlice';
 import SidebarData from '@/renderer/components/router/SidebarData';
 import PageLayout from '@/renderer/components/layout/PageLayout';
+import { setIp, setPort } from '@/renderer/store/slices/appAkURLSlice';
+import akrq from '@/renderer/api/Akrq';
 
 const drawerWidth = 240;
 
@@ -83,7 +86,8 @@ interface Props {
 const Sidebar: React.FunctionComponent<Props> = ({ children }) => {
   const theme = useTheme();
   const navigate = useNavigate();
-
+  const ip = useSelector((state: RootState) => state.appAkUrl.ip);
+  const port = useSelector((state: RootState) => state.appAkUrl.port);
   // const [close, setClose] = useState(true);
   const darkTheme = useSelector((state: RootState) => state.appScreen.darkTheme);
   const dispatch = useDispatch();
@@ -99,6 +103,14 @@ const Sidebar: React.FunctionComponent<Props> = ({ children }) => {
   };
   const handleChangeTheme = (): void => {
     dispatch(setDarkTheme(!darkTheme));
+  };
+  const handleChangeIp = (newip) => {
+    dispatch(setIp(newip));
+    akrq.changeBaseUrl(newip, port);
+  };
+  const handleChangePort = (newport) => {
+    dispatch(setPort(newport));
+    akrq.changeBaseUrl(ip, newport);
   };
   const toggleDrawer =
     (anchor: string, open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
@@ -129,6 +141,16 @@ const Sidebar: React.FunctionComponent<Props> = ({ children }) => {
           <Typography variant="h6" component="div" sx={{ "flexGrow": 1 }}>
             ak-desktop · {subTitle || '主页'}
           </Typography>
+          <TextField
+            label="IP"
+            value={ip}
+            onChange={(e) => handleChangeIp(e.target.value as string)}
+          />
+          <TextField
+            label="端口"
+            value={port}
+            onChange={(e) => handleChangePort(e.target.value as string)}
+          />
           <IconButton
             size="large"
             edge="start"

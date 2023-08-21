@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import appScreenSlice from '@/renderer/store/slices/appScreenSlice';
+import appAkURLSlice from '@/renderer/store/slices/appAkURLSlice';
 
 export const store = configureStore({
   "reducer": {
     "appScreen": appScreenSlice,
+    "appAkUrl": appAkURLSlice,
   },
 });
 
